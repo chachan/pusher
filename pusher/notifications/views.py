@@ -1,3 +1,4 @@
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, get_object_or_404
 from notifications import models
 from django.http import HttpResponse
@@ -6,15 +7,16 @@ import json
 
 def message_retrieve(request, pk):
     message = get_object_or_404(models.Message, pk=pk)
-    messages_with_natural_datetime = {
+    message_with_natural_datetime = {
         'pk': pk,
         'content': message.content,
         'level': message.level,
         'created_at_natural': message.created_at_natural
     }
-    response = json.dumps(messages_with_natural_datetime)
+    response = json.dumps(message_with_natural_datetime)
     return HttpResponse(response, content_type='application/json')
-    
+
+@csrf_exempt
 def message_list_create(request):
     if request.method == 'GET':
         messages = models.Message.objects.all()
@@ -34,5 +36,11 @@ def message_list_create(request):
         message.content = request.POST.get('content', '')
         message.level = request.POST.get('level', '')
         message.save()
-        response = serializers.serialize('json', message)
+        message_with_natural_datetime = {
+            'pk': message.pk,
+            'content': message.content,
+            'level': message.level,
+            'created_at_natural': message.created_at_natural
+        }
+        response = json.dumps(message_with_natural_datetime)
         return HttpResponse(response, content_type='application/json')
