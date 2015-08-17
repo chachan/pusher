@@ -9,4 +9,6 @@ pip install -r requirements.pip
 # Setting pusher database for Django
 cd pusher
 python manage.py syncdb --noinput
+
+# Start django server
 python manage.py runserver 0.0.0.0:8080

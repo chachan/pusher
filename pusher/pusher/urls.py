@@ -1,17 +1,10 @@
 from django.conf.urls import patterns, include, url
+from django.contrib import admin
+admin.autodiscover()
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
-
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'pusher.views.home', name='home'),
-    # url(r'^pusher/', include('pusher.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+urlpatterns = patterns(
+    '',
+    url(r'^messages/$', 'notifications.views.message_list_create', name='message-list-create'),
+    url(r'^messages/(?P<pk>\d+)/$', 'notifications.views.message_retrieve', name='message-retrieve'),
+    url(r'^admin/', include(admin.site.urls)),
 )
