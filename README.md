@@ -20,4 +20,4 @@ From your guest:
         $ mv chachan-pusher-*/.* .
         $ rmdir chachan-pusher-*
         $ sudo sh install.sh
-        $ sudo sh start.sh
+        $ sh start.sh

@@ -1,3 +1,4 @@
+#!/bin/sh
 
 # Creating Python Virtual Environments
 echo "Creating Python Virtual Environments..."
