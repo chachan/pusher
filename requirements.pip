@@ -2,6 +2,7 @@ django==1.4.21
 mysqlclient
 pytest-django
 factory_boy
+fake-factory
 djangorestframework
 south
 flake8
