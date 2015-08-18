@@ -3,9 +3,13 @@ from django.shortcuts import render, get_object_or_404
 from notifications import models
 from django.http import HttpResponse
 import json
+import logging
+
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s -%(filename)s:%(lineno)d - %(message)s')
 
 
-def message_retrieve(request, pk):
+
+def api_message_retrieve(request, pk):
     message = get_object_or_404(models.Message, pk=pk)
     message_with_natural_datetime = {
         'pk': pk,
@@ -17,7 +21,7 @@ def message_retrieve(request, pk):
     return HttpResponse(response, content_type='application/json')
 
 @csrf_exempt
-def message_list_create(request):
+def api_message_list_create(request):
     if request.method == 'GET':
         messages = models.Message.objects.all()
         messages_with_natural_datetime = []
@@ -44,3 +48,8 @@ def message_list_create(request):
         }
         response = json.dumps(message_with_natural_datetime)
         return HttpResponse(response, content_type='application/json')
+
+def message_list(request):
+    messages = models.Message.objects.all()
+    logging.debug(messages)
+    return render(request, 'messages.html', {'messages': messages})
