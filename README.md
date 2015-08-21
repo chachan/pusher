@@ -27,8 +27,8 @@
         $ sudo sh install.sh
         $ sh start.sh
 
-3. Visit http://localhost:8080/messages/
+3. Start apache2: `sudo service apache2 start`
 
-4. To create notifications execute: `sh /vagrant/post-message.sh --message "Hello World" --level "Moon"`
+4. Visit http://localhost:8080/messages/
 
-5. Start apache2: `sudo service apache2 start`
+5. To create notifications execute: `sh /vagrant/post-message.sh --message "Hello World" --level "Moon"`
