@@ -56,14 +56,6 @@ echo "Installing Ember.JS..."
 cd /vagrant
 npm install -g ember-cli
 
-# Installing socket.io
-echo "Installing socket.io..."
-npm install -g socket.io
-
-# Installing amqplib
-echo "Installing amqplib..."
-npm install -g amqplib
-
 # Creating database
 echo "Creating database..."
 mysql --user="root" --password="pusher123abc" --execute="CREATE DATABASE pusher CHARACTER SET utf8;"
