@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from notifications import models
 from django.http import HttpResponse
 import json
+import tasks
 import logging
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s -%(filename)s:%(lineno)d - %(message)s')
@@ -23,7 +24,7 @@ def api_message_retrieve(request, pk):
 @csrf_exempt
 def api_message_list_create(request):
     if request.method == 'GET':
-        messages = models.Message.objects.all()
+        messages = models.Message.objects.order_by('-created_at').all()
         messages_with_natural_datetime = []
         for each in messages:
             m = {
@@ -47,9 +48,10 @@ def api_message_list_create(request):
             'created_at_natural': message.created_at_natural
         }
         response = json.dumps(message_with_natural_datetime)
+        tasks.add_message.delay(response)
         return HttpResponse(response, content_type='application/json')
 
 def message_list(request):
-    messages = models.Message.objects.all()
+    messages = models.Message.objects.order_by('-created_at').all()
     logging.debug(messages)
     return render(request, 'messages.html', {'messages': messages})

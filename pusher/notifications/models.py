@@ -15,4 +15,4 @@ class Message(models.Model):
         return '{} ago'.format(format_timedelta(delta, locale='en_US'))
 
     def __unicode__(self):
-        return 'Content: {} | Level: {} | created_at'.format(self.content, self.level, self.created_at_natural)
+        return 'Content: {} | Level: {} | created_at'.format(self.content, self.level, self.created_at.isoformat())

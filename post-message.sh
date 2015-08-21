@@ -46,5 +46,5 @@ if [ -z "$level" ]; then
     exit 1
 fi
 
-curl --data "message=$message&level=level" http://localhost:8080/messages/
+curl --data "content=$message&level=level" http://localhost:8080/api/messages/
 printf '\n'

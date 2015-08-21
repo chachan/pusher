@@ -7,3 +7,4 @@ djangorestframework
 south
 flake8
 Babel
+celery

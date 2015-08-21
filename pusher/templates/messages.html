@@ -34,5 +34,26 @@
       </main>
     </div>
     <script src="{{ STATIC_URL }}js/material.min.js"></script>
+    <script src="{{ STATIC_URL }}js/socket.io.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery-1.11.3.min.js"></script>
+    <script>
+        var socket = io.connect('http://localhost:3000');
+        socket.on('connect',function() {
+          console.log('Client has connected to the server!');
+        });
+        socket.on('disconnect',function() {
+          console.log('The client has disconnected!');
+        });
+        socket.on('message', function(msg) {
+            console.log('Message received: ' + msg);
+            var message = JSON.parse(msg);
+            console.log('Message received: ' + message);
+            var content = $('<td>').text(message.content);
+            var level = $('<td>').text(message.level);
+            var created_at_natural = $('<td>').text(message.created_at_natural);
+            $('tbody').prepend($('<tr>').append(content).append(level).append(created_at_natural));
+            $('tr:first td').addClass('mdl-data-table__cell--non-numeric');
+        });
+    </script>
   </body>
 </html>
