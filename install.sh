@@ -41,21 +41,6 @@ apt-get -qqy install nodejs
 echo "Installing Python toys..."
 apt-get -qqy install python-virtualenv python-dev python-setuptools
 
-# Installing watchman
-echo "Installing watchman..."
-cd /tmp
-git clone https://github.com/facebook/watchman.git
-cd watchman
-./autogen.sh
-./configure
-make
-make install
-
-# Installing Ember.JS
-echo "Installing Ember.JS..."
-cd /vagrant
-npm install -g ember-cli
-
 # Creating database
 echo "Creating database..."
 mysql --user="root" --password="pusher123abc" --execute="CREATE DATABASE pusher CHARACTER SET utf8;"
