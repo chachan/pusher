@@ -11,6 +11,10 @@ pip install -r requirements.pip
 cd pusher
 python manage.py syncdb --noinput
 
+# Preparing application
+python manage.py collectstatic --noinput
+
+
 # Start application
 python manage.py runserver 0.0.0.0:8080 &
 celery worker -A tasks --autoreload --loglevel=DEBUG &
