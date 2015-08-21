@@ -3,6 +3,7 @@ from faker import Factory as FakerFactory
 
 faker = FakerFactory.create()
 
+
 class MessageFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = 'notifications.Message'
