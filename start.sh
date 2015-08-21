@@ -11,5 +11,12 @@ pip install -r requirements.pip
 cd pusher
 python manage.py syncdb --noinput
 
-# Start django server
-python manage.py runserver 0.0.0.0:8080
+# Start application
+python manage.py runserver 0.0.0.0:8080 &
+celery worker -A tasks --autoreload --loglevel=DEBUG &
+node io-server.js &
+
+echo "====================================="
+echo "Visit http://localhost:8080/messages/"
+echo "====================================="
+echo "To create notifications execute: sh /vagrant/post-message.sh --message \"Hello World\" --level \"Moon\"
