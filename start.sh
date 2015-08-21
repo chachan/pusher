@@ -18,6 +18,7 @@ venv/bin/pip install -r requirements.pip
 # Setting pusher database for Django
 cd pusher
 ../venv/bin/python manage.py syncdb --noinput
+../venv/bin/python manage.py migrate --fake
 
 # Preparing application
 ../venv/bin/python manage.py collectstatic --noinput
