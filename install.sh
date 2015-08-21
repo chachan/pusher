@@ -64,8 +64,8 @@ mysql --user="root" --password="pusher123abc" --execute="CREATE DATABASE pusher 
 # Installing and setting Apache2
 echo "Installing Apache2..."
 apt-get -qqy install apache2 libapache2-mod-wsgi
+service apache2 stop
 cp apache-vhost.conf /etc/apache2/sites-available/000-pusher.conf
 a2ensite 000-pusher
 a2dissite 000-default
 sed -i "s/Listen 80/Listen 8080/g" /etc/apache2/ports.conf
-service apache2 restart

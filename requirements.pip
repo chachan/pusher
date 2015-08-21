@@ -3,8 +3,6 @@ mysqlclient
 pytest-django
 factory_boy
 fake-factory
-djangorestframework
-south
 flake8
 Babel
 celery

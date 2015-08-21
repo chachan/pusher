@@ -30,3 +30,5 @@
 3. Visit http://localhost:8080/messages/
 
 4. To create notifications execute: `sh /vagrant/post-message.sh --message "Hello World" --level "Moon"`
+
+5. Start apache2: `sudo service apache2 start`

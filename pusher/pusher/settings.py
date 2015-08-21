@@ -119,7 +119,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'south',
     'notifications',
     'django.contrib.admin',
 )
