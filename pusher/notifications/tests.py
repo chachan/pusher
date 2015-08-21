@@ -10,7 +10,7 @@ pytestmark = pytest.mark.django_db
 def test_get_messages():
     factories.MessageFactory.create_batch(size=10)
     c = Client()
-    response = c.get('/messages/')
+    response = c.get('/api/messages/')
     json_response = json.loads(response.content)
     assert len(json_response) == 10
     assert len(json_response[0]['content']) > 0
@@ -24,7 +24,7 @@ def test_post_messages():
         'content': 'This is a content',
         'level': 'This is a level'
     }
-    response = c.post('/messages/', data)
+    response = c.post('/api/messages/', data)
     json_response = json.loads(response.content)
     assert data['content'] == json_response['content']
     assert data['level'] == json_response['level']
