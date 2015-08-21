@@ -8,3 +8,4 @@ south
 flake8
 Babel
 celery
+pika
