@@ -7,14 +7,16 @@
 
 # How to run the application
 
-From your host:
+
+1. From your host:
+
         $ mkdir pusher
         $ cd pusher
         $ curl -O https://bitbucket.org/chachan/pusher/raw/HEAD/Vagrantfile
         $ vagrant up --provider virtualbox
         $ vagrant ssh
 
-From your guest:
+2. From your guest:
 
         $ cd /vagrant
         $ wget https://bitbucket.org/chachan/pusher/get/HEAD.zip
@@ -25,6 +27,6 @@ From your guest:
         $ sudo sh install.sh
         $ sh start.sh
 
-Visit http://localhost:8080/messages/
+3. Visit http://localhost:8080/messages/
 
-To create notifications execute: `sh /vagrant/post-message.sh --message "Hello World" --level "Moon"`
+4. To create notifications execute: `sh /vagrant/post-message.sh --message "Hello World" --level "Moon"`
